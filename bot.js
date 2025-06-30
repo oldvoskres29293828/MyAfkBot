@@ -4,7 +4,7 @@ function createBot() {
   const bot = mineflayer.createBot({
     host: 'Ochchim.aternos.me',
     port: 12280,
-    version: '1.21.5',               // ← явно указываем новую версию
+    version: '1.21.5',               // ← явно указываем поддержку 1.21.5
     username: 'AFK_Bot_' + Math.floor(Math.random() * 1000),
   });
 
