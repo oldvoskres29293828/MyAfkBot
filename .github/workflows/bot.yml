@@ -1,0 +1,28 @@
+name: AFK Bot
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  afk-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run AFK Bot
+        # Запускает скрипт; процесс будет удерживать workflow активным, 
+        # но GitHub Actions завершит job через ~6 часов максимально.
+        run: npm start
