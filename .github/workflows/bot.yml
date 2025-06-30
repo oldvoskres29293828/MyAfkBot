@@ -1,0 +1,30 @@
+const mineflayer = require('mineflayer')
+
+function createBot() {
+  const bot = mineflayer.createBot({
+    host: 'Ochchim.aternos.me', // <-- замени на адрес своего сервера
+    port: 12280,
+    username: 'AFK_Bot_' + Math.floor(Math.random() * 1000), // ник может быть любой
+  })
+
+  bot.on('spawn', () => {
+    console.log('✅ Бот зашёл на сервер и стоит AFK')
+
+    // Прыгает каждые 10 секунд, чтобы не выкидывало за AFK
+    setInterval(() => {
+      bot.setControlState('jump', true)
+      setTimeout(() => bot.setControlState('jump', false), 500)
+    }, 10000)
+  })
+
+  bot.on('end', () => {
+    console.log('❌ Бот отключён. Переподключаем...')
+    setTimeout(createBot, 5000) // Переподключение через 5 секунд
+  })
+
+  bot.on('error', (err) => {
+    console.log('Ошибка:', err.message)
+  })
+}
+
+createBot()
