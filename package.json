@@ -6,7 +6,6 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "mineflayer": "github:PrismarineJS/mineflayer#master",
-    "minecraft-data": "github:PrismarineJS/node-minecraft-data#master"
+    "mineflayer": "^4.29.0"
   }
 }
